@@ -1,0 +1,157 @@
+body {
+    margin: 20px;
+    font-family: sans;
+}
+
+#frame {
+    background-color: #ddd;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+}
+
+#urlField {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+#submitButton {
+    display: inline-block;
+}
+
+#errorInfo {
+    color: red;
+    font-size: 13px;
+    display: inline-block;
+}
+
+/* Viewer: */
+#flexHeader {
+    display: flex;
+}
+
+#headerLeft, #headerRight {
+    padding: 20px;
+}
+
+#headerLeft {
+    flex-grow: 1;
+    background-image: linear-gradient(to right, #a0a0a0 , #f4f4f4);
+}
+
+#headerRight {
+    width: 320px;
+    background-color: #f4f4f4;
+}
+
+#personName {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+#urlField2 {
+    margin-bottom: 5px;
+    width: 300px;
+}
+
+#submitButton2 {
+    display: inline-block;
+}
+
+.submit {
+    background-color: rgb(26, 98, 252);
+    border-radius: 4px;
+    border: none;
+    width: 85px;
+    height: 28px;
+    color: white;
+}
+
+.submit:hover {
+    background-color: rgb(65, 125, 255);
+}
+
+.submit:active {
+    background-color: rgb(0, 64, 201);
+}
+
+.url {
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #555;
+    height: 18px;
+    padding: 5px;
+}
+
+.url:hover {
+    border-color: #7a7a7a;
+}
+
+.url:focus {
+    border-color: rgb(26, 98, 252);
+}
+
+#errorInfo2 {
+    color: red;
+    font-size: 13px;
+    display: inline-block;
+}
+
+#altitude {
+    margin: 20px;
+}
+
+#lengthAndSpeed {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#time {
+    margin-left: 20px;
+}
+
+#mapContainer {
+    width: 640px;
+    height: 400px;
+    float: right;
+    margin: 20px;
+    border: solid 1px #aaa;
+}
+
+#loading {
+    margin-left: 5px;
+    display: inline-block;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+}
+
+#spinner {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 26px;
+    height: 26px;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#mask {
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+}
+
+#maskedCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    border: 3px solid blue;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>IGC Viewer</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" >window.ENV_VARIABLE = 'https://developer.here.com'</script>
+  </head>
+  
+  <body>
+    <div id="frame">
+      Podaj adres pliku IGC:
+      <input type="text" placeholder="URL..." id="urlField" class="url">
+      <input type="button" value="Otwórz" id="submitButton" class="submit">
+    </div>
+    
+    <script src="index.js"></script>
+  </body>
+</html>
