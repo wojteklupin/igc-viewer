@@ -1,3 +1,11 @@
+let svgMarkup = 
+    '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="32" height="32" viewBox="0 0 263.335 263.335" style="enable-background:new 0 0 263.335 263.335;" xml:space="preserve">' +
+    '<g>' +
+    '<g xmlns="http://www.w3.org/2000/svg">' +
+    '<path d="M40.479,159.021c21.032,39.992,49.879,74.22,85.732,101.756c0.656,0.747,1.473,1.382,2.394,1.839   c0.838-0.396,1.57-0.962,2.178-1.647c80.218-61.433,95.861-125.824,96.44-128.34c2.366-9.017,3.57-18.055,3.57-26.864    C237.389,47.429,189.957,0,131.665,0C73.369,0,25.946,47.424,25.946,105.723c0,8.636,1.148,17.469,3.412,26.28" fill="{COLOR}"/>' +
+    '</g>' +
+    '</g></svg>';
+
 function showData(igcContent, map) {
     igcContent = igcContent.split("\r\n");
     let firstBVisited = false;
@@ -12,6 +20,7 @@ function showData(igcContent, map) {
     let startAlt;
     let endAlt;
 
+    let startLat, startLon;
     let prevLat, prevLon, currLat, currLon;
     let lineString = new H.geo.LineString();
     
@@ -41,15 +50,6 @@ function showData(igcContent, map) {
                 break;
 
             case "B":
-                if (!firstBVisited) {
-                    startTime = line.slice(1, 7);
-                    startTime = startTime.slice(0, 2) + ":" + startTime.slice(2,4) + ":" + startTime.slice(4, 6);
-                    startAlt = +line.slice(30, 35);
-                    minAlt = startAlt;
-
-                    firstBVisited = true;
-                }
-                
                 endTime = line.slice(1, 7);
 
                 let alt = +line.slice(30, 35);
@@ -81,7 +81,17 @@ function showData(igcContent, map) {
                     }
                 }
 
+                if (!firstBVisited) {
+                    startTime = line.slice(1, 7);
+                    startTime = startTime.slice(0, 2) + ":" + startTime.slice(2,4) + ":" + startTime.slice(4, 6);
+                    startAlt = +line.slice(30, 35);
+                    minAlt = startAlt;
+                    
+                    startLat = currLat;
+                    startLon = currLon;
 
+                    firstBVisited = true;
+                }
         }
     }
 
@@ -111,6 +121,19 @@ function showData(igcContent, map) {
     );
     
     map.addObject(polyline);
+
+    let startIcon = new H.map.Icon(
+        svgMarkup.replace('{COLOR}', 'green'));
+    let startMarker = new H.map.Marker({lat: startLat, lng: startLon },
+        {icon: startIcon});
+    map.addObject(startMarker);
+
+    let endIcon = new H.map.Icon(
+        svgMarkup.replace('{COLOR}', 'red'));
+    let endMarker = new H.map.Marker({lat: currLat, lng: currLon },
+        {icon: endIcon});
+    map.addObject(endMarker);
+
     map.getViewModel().setLookAtData({bounds: polyline.getBoundingBox()});
 }
 
